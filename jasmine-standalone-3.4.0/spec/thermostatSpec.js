@@ -60,6 +60,14 @@ describe('Thermostat', function() {
            }
            expect(thermostat.getCurrentTemperature()).toEqual(25)
         });
+
+        it('lets you reset temperature to 20', function(){
+            for (i = 0; i < 3; i++) {
+                thermostat.tempUp()
+            }
+            thermostat.resetTemp();
+           expect(thermostat.getCurrentTemperature()).toEqual(20)
+        });
     });
 
     describe('power saving mode', function(){
