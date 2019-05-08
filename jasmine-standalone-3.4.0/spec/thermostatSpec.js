@@ -88,4 +88,26 @@ describe('Thermostat', function() {
 
     });
 
+    describe('displays energy usage', function(){
+        it('as low usage if temperature is below 18', function(){
+            for(i = 0; i < 4; i++){
+                thermostat.tempDown();
+            }
+            expect(thermostat.getEnergyUsage()).toEqual('low-usage');
+        })
+
+        it('as medium usage if temperature is below 25', function(){
+            expect(thermostat.getEnergyUsage()).toEqual('medium-usage');
+        })
+
+        it('as high usage anything above 25', function(){
+            thermostat.turnPowerSavingOff();
+            for(i = 0; i < 7; i++){
+                thermostat.tempUp();
+            }
+            expect(thermostat.getEnergyUsage()).toEqual('high-usage');
+        })
+
+    })
+
 })
