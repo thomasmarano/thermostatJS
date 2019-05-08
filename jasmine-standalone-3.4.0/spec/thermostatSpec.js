@@ -14,11 +14,15 @@ describe('Thermostat', function() {
             expect(thermostat.getCurrentTemperature()).toEqual(20);
         });
 
-        it('adjusts upward by 1', function(){
-            thermostat.increaseTemperature();
+        it('adjusts upward by 1 with up', function(){
+            thermostat.tempUp();
             expect(thermostat.getCurrentTemperature()).toEqual(21)
         });
 
+        it('adjusts downward by 1 with down', function(){
+           thermostat.tempDown();
+           expect(thermostat.getCurrentTemperature()).toEqual(19)
+        });
     });
 
 })
