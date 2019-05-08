@@ -12,10 +12,10 @@ Thermostat.prototype.tempUp = function(){
 };
 
 Thermostat.prototype.tempDown = function(){
-    this.temperature -= 1;
-    if (this.temperature < this.MIN_TEMP) {
-        this.temperature = this.MIN_TEMP
+    if (this.isMinTemp()) {
+        return
     }
+    this.temperature -= 1;
 };
 
 Thermostat.prototype.isMinTemp = function() {
