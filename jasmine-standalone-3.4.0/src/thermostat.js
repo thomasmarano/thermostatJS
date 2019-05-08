@@ -50,5 +50,29 @@ Thermostat.prototype.turnPowerSavingOff = function(){
 
 Thermostat.prototype.turnPowerSavingOn = function(){
     this.powerSaving = true
+};
+
+Thermostat.prototype.getEnergyUsage = function(){
+  if (this.isLowUsage()){
+      return 'low-usage';
+  }
+  if (this.isMediumUsage()) {
+      return 'medium-usage';
+  }
+  if (this.isHighUsage()) {
+      return 'high-usage';
+  }
+};
+
+Thermostat.prototype.isLowUsage = function(){
+    return this.temperature < 18;
+}
+
+Thermostat.prototype.isMediumUsage = function(){
+    return this.temperature < 25;
+}
+
+Thermostat.prototype.isHighUsage = function(){
+    return this.temperature > 24;
 }
 
