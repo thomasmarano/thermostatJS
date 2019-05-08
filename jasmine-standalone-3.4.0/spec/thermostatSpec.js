@@ -21,25 +21,36 @@ describe('Thermostat', function() {
 
         it('adjusts downward by 1 with down', function(){
            thermostat.tempDown();
-           expect(thermostat.getCurrentTemperature()).toEqual(19)
+           expect(thermostat.getCurrentTemperature()).toEqual(19);
         });
 
         it('checks whether temperature is at min temp', function(){
             for (i = 0; i < 10; i++){
                 thermostat.tempDown()
             }
-            expect(thermostat.isMinTemp()).toBeTruthy()
+            expect(thermostat.isMinTemp()).toBeTruthy();
         });
 
         it('checks whether temperature is not at min temp', function(){
-            expect(thermostat.isMinTemp()).toBeFalsy()
+            expect(thermostat.isMinTemp()).toBeFalsy();
         })
 
         it('cannot go below 10 degrees', function(){
            for (i = 0; i < 11; i++){
-               thermostat.tempDown()
+               thermostat.tempDown();
            }
            expect(thermostat.getCurrentTemperature()).toEqual(10)
+        });
+
+        it('checks whether temperature is at max temp', function(){
+            expect(thermostat.isMaxTemp()).toBeFalsy();
+        })
+
+        it('cannot go above 32 degrees', function(){
+           for (i = 0; i < 13; i++) {
+               thermostat.tempUp();
+           }
+           expect(thermostat.getCurrentTemperature()).toEqual(32)
         });
     });
 
