@@ -24,12 +24,25 @@ describe('Thermostat', function() {
            expect(thermostat.getCurrentTemperature()).toEqual(19)
         });
 
+        it('checks whether temperature is at min temp', function(){
+            for (i = 0; i < 10; i++){
+                thermostat.tempDown()
+            }
+            expect(thermostat.isMinTemp()).toBeTruthy()
+        });
+
+        it('checks whether temperature is not at min temp', function(){
+            expect(thermostat.isMinTemp()).toBeFalsy()
+        })
+
         it('cannot go below 10 degrees', function(){
            for (i = 0; i < 11; i++){
                thermostat.tempDown()
            }
            expect(thermostat.getCurrentTemperature()).toEqual(10)
         });
+
+
     });
 
 })
