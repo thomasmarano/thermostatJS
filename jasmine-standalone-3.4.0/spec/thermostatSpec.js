@@ -1,4 +1,4 @@
-'use  strict'
+'use  strict';
 
 describe('Thermostat', function() {
 
@@ -22,6 +22,13 @@ describe('Thermostat', function() {
         it('adjusts downward by 1 with down', function(){
            thermostat.tempDown();
            expect(thermostat.getCurrentTemperature()).toEqual(19)
+        });
+
+        it('cannot go below 10 degrees', function(){
+           for (i = 0; i < 11; i++){
+               thermostat.tempDown()
+           }
+           expect(thermostat.getCurrentTemperature()).toEqual(10)
         });
     });
 
