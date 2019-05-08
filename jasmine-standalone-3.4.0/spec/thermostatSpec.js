@@ -46,11 +46,19 @@ describe('Thermostat', function() {
             expect(thermostat.isMaxTemp()).toBeFalsy();
         })
 
-        it('cannot go above 32 degrees', function(){
-           for (i = 0; i < 13; i++) {
+        it('cannot go above 32 degrees if power saving off', function(){
+           thermostat.turnPowerSavingOff();
+            for (i = 0; i < 13; i++) {
                thermostat.tempUp();
            }
            expect(thermostat.getCurrentTemperature()).toEqual(32)
+        });
+
+        it('cannot go above 25 degrees if power saving on', function(){
+           for (i = 0; i < 7; i++) {
+               thermostat.tempUp();
+           }
+           expect(thermostat.getCurrentTemperature()).toEqual(25)
         });
     });
 
