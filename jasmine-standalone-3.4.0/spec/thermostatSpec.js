@@ -41,7 +41,23 @@ describe('Thermostat', function() {
            }
            expect(thermostat.getCurrentTemperature()).toEqual(10)
         });
+    });
 
+    describe('power saving mode', function(){
+        it('checks it starts on', function(){
+           expect(thermostat.isPowerSavingOn()).toBe(true)
+        });
+
+        it('can be turned off', function(){
+            thermostat.turnPowerSavingOff();
+            expect(thermostat.isPowerSavingOn()).not.toBe(true);
+        })
+
+        it('can be turned on', function(){
+            thermostat.turnPowerSavingOff();
+            thermostat.turnPowerSavingOn();
+            expect(thermostat.isPowerSavingOn()).toBe(true)
+        })
 
     });
 
