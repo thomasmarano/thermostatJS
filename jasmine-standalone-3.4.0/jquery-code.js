@@ -1,10 +1,17 @@
 $( document ).ready(function() {
     var thermostat = new Thermostat();
     updateTemperature()
-    // $.get('http://api.openweathermap.org/data/2.5/weather?id=1689973&units=metric&appid=cbbb1d97dfc74a68e65094280e01dfc0', function(data) {
-    //     $('#current-temperature').text(data.main.temp)
-    //     console.log(data)
-    // })
+
+
+
+
+    $('#current-city').change(function(){
+        var x = $('#current-city').val()
+        $.get('http://api.openweathermap.org/data/2.5/weather?q=' + x + '&units=metric&appid=cbbb1d97dfc74a68e65094280e01dfc0', function(data){
+            $('#current-temperature').text(data.main.temp)
+            $('#city-name').text(data.name)
+        })
+    })
 
     $('#london').click(function(){
         $.get('http://api.openweathermap.org/data/2.5/weather?id=2643743&units=metric&appid=cbbb1d97dfc74a68e65094280e01dfc0', function(data){
