@@ -1,32 +1,65 @@
 $( document ).ready(function() {
     var thermostat = new Thermostat();
-    $( "#temperature" ).text(thermostat.getCurrentTemperature());
+    updateTemperature()
+    // $.get('http://api.openweathermap.org/data/2.5/weather?id=1689973&units=metric&appid=cbbb1d97dfc74a68e65094280e01dfc0', function(data) {
+    //     $('#current-temperature').text(data.main.temp)
+    //     console.log(data)
+    // })
+
+    $('#london').click(function(){
+        $.get('http://api.openweathermap.org/data/2.5/weather?id=2643743&units=metric&appid=cbbb1d97dfc74a68e65094280e01dfc0', function(data){
+            $('#current-temperature').text(data.main.temp)
+            $('#city-name').text(data.name)
+        })
+    })
+
+
+    $('#san-francisco').click(function(){
+        $.get('http://api.openweathermap.org/data/2.5/weather?id=1689973&units=metric&appid=cbbb1d97dfc74a68e65094280e01dfc0', function(data){
+            $('#current-temperature').text(data.main.temp)
+            $('#city-name').text(data.name)
+        })
+    })
+
+    $('#nyc').click(function(){
+        $.get('http://api.openweathermap.org/data/2.5/weather?id=5128638&units=metric&appid=cbbb1d97dfc74a68e65094280e01dfc0', function(data){
+            $('#current-temperature').text(data.main.temp)
+            $('#city-name').text(data.name)
+        })
+    })
+
+
 
     $("#temperature-up").click(function(){
         thermostat.tempUp();
-        $( "#temperature" ).text(thermostat.getCurrentTemperature());
+        updateTemperature()
     })
 
     $("#temperature-down").click(function(){
         thermostat.tempDown();
-        $('#temperature').text(thermostat.getCurrentTemperature());
+        updateTemperature()
     })
 
     $('#temperature-reset').click(function(){
         thermostat.resetTemp();
-        $('#temperature').text(thermostat.getCurrentTemperature())
+        updateTemperature()
     })
 
     $('#power-on').click(function(){
         thermostat.turnPowerSavingOn()
         $('#power-status').text('ON')
-        thermostat.getCurrentTemperature()
+        updateTemperature()
     })
 
     $('#power-off').click(function(){
         thermostat.turnPowerSavingOff()
-        $('#document').text('OFF')
-        thermostat.getCurrentTemperature()
+        $('#power-status').text('OFF')
+        updateTemperature()
     })
+
+    function updateTemperature(){
+        $("#temperature").text(thermostat.getCurrentTemperature());
+        $("#temperature").attr('class', thermostat.getEnergyUsage())
+    }
 
 });
