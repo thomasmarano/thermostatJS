@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Thermostat</title>
+        <link rel="stylesheet" href="styling.css">
+    </head>
+    <body>
+        <section>
+           <h1>Thermostat</h1>
+            <h2 id="temperature"></h2>
+            <div>
+                <button id="temperature-up">+</button>
+                <button id="temperature-down">-</button>
+                <button id="temperature-reset">RESET</button>
+                Power Saving Mode is <span id="power-status">ON</span>
+                <button id="power-on">PS ON</button>
+                <button id="power-off">PS OFF</button>
+            </div>
+        </section>
+        <section>
+            <h1 id="city-name"></h1>
+            <h2 id="current-temperature"></h2>
+            <button id="london">London</button>
+            <button id="san-francisco">SF</button>
+            <button id="nyc">NYC</button>
+        </section>
+        <script src="src/thermostat.js"></script>
+        <script src="jquery-3.4.1.js"></script>
+        <script src="jquery-code.js"></script>
+
+    </body>
+</html>
